@@ -37,7 +37,6 @@ def get_input_image():
         zlayer = layer.zfill(2)
         image = str(data.get('image'))
         zimage = image.zfill(2)
-        print("L:" +layer+"\nI:"+image)
         dices = get_dice_list(dice_data,int(image))
         global input_images
         input_images = {"img":"static/brain_images/test_x_"+image+".jpg"}
@@ -48,7 +47,6 @@ def get_input_image():
         input_images.update({"feature":"static/feature_maps_plots/"+zimage+"_image_"+zlayer+"_layer_avg_feature_map_mse.png"})
         input_images.update({"partial_dice": dices[0]})
         input_images.update({"full_dice": dices[1]})
-        print(input_images)
         return flask.jsonify(input_images)
     else:
         return flask.jsonify(input_images)
